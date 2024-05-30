@@ -30,8 +30,10 @@ async def update_shelter(shelter_name: str, updated_shelter: Shelter) -> Shelter
         if shelter.name == shelter_name:
             shelters[i] = updated_shelter
             return updated_shelter
+        
+    shelters.append(updated_shelter)
+    return updated_shelter
     
-    raise HTTPException(status_code=404, detail="Shelter not found")
 
 @app.delete("/shelters/{shelter_name}")
 async def delete_shelter(shelter_name: str) -> dict:
